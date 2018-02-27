@@ -1,8 +1,24 @@
 {
     "name": "NodeRESTAPI",
     "version": "1.0.0",
-    "keywords": ["util", "functional", "server", "client", "browser"],
-    "author": "David",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "Noumcreation",
     "contributors": [],
-    "dependencies": {}
+    "dependencies": {
+        "bluebird": "^3.5.1",
+        "body-parser": "^1.18.2",
+        "express": "^4.16.2",
+        "nodemon": "^1.15.1",
+        "pg-promise": "^8.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error : no test provided\" && exit 1",
+        "start": "nodemon sources/main.js"
+    }
 }
