@@ -6,13 +6,13 @@
 
 
 let promise = require('bluebird');
-let dbConfig = require('../../config/dbConfig');
+let config = require('../../config/config');
 
 var options = {
     promiseLib : promise
 }
 
 var pgp = require('pg-promise')(options);
-var db = pgp(dbConfig);
+var db = pgp(config.db);
 
 module.exports = db;
