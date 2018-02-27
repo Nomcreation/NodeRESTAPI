@@ -4,7 +4,8 @@
 
 // Get Database object
 let db = require('./db/dbConnector');
-
+let url = require('url');
+let config = require('../config/config');
 
 /**
  * Some of the datas need to be parsed or converted
@@ -56,13 +57,21 @@ function formatCategories(data) {
  */
 
 function getAllMovies(req, res, next) {
+    var getParams = url.parse(req.url, true).query;
+    var offset = getParams.page ? parseInt(getParams.page-1): 0;
+
     db.any('SELECT m.*, string_agg(c.name, \',\') AS categories FROM movies AS m ' +
             'LEFT JOIN movie_has_categories AS mhc ON m.id = movie_id ' +
             'LEFT JOIN categories AS c ON category_id = c.id ' +
-            'GROUP BY m.id;')
+            'GROUP BY m.id ORDER BY m.id LIMIT $1 OFFSET $2;', [config.pagination, offset*config.pagination])
             .then(function (data) {
-                data = formatCategories(data);
-                res.status(200)
+                var responseCode = 200;
+                if(data.length > 0) {
+                    data = formatCategories(data);
+                } else {
+                    responseCode = 204;
+                } 
+                res.status(responseCode)
                         .json({
                             status: 'success',
                             message: 'All datas successfully fetched',
@@ -80,8 +89,13 @@ function getMovieById(req, res, next) {
             'LEFT JOIN categories AS c ON category_id = c.id ' +
             'WHERE m.id = $1 GROUP BY m.id ;', movieId)
             .then(function (data) {
-                data = formatCategories(data);
-                res.status(200)
+                var responseCode = 200;
+                if(data.length > 0) {
+                    data = formatCategories(data);
+                } else {
+                    responseCode = 204;
+                } 
+                res.status(responseCode)
                         .json({
                             status: 'success',
                             message: 'Movie ' + movieId + ' found',
