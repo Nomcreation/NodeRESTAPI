@@ -1,14 +1,6 @@
 # NodeRESTAPI
 
-Get started whith node and PostgreSQL with this simple REST mode API to manage Movies and categories.
-
-## Getting Started
-
-Load the current application, install the dependecies listed below.
-Get your API key form  https://www.themoviedb.org/ 
-How to get your API key, you must create an account first and folox these instructions : https://developers.themoviedb.org/3/getting-started/introduction
-
-Add your API Key to the config.js file
+Basic REST API to manage movies & catégories. Introduction to NodeJs & PostgreSQL.
 
 ### Prerequisites
 
