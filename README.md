@@ -12,6 +12,7 @@ bluebird
 nodemon
 body-parser
 nodemon
+redis
 ```
 
 ### Installing
