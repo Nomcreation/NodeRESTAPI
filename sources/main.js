@@ -2,13 +2,13 @@
  * Base file for CRUD REST API
  */
 
-let express = require('express');
-let bodyParser = require('body-parser');
-let moviesDb = require('./models/moviesQueries')
-let categoriesDb = require('./models/categoriesQueries')
+let express = require('express'),
+    bodyParser = require('body-parser'),
+    moviesDb = require('./models/moviesQueries'),
+    categoriesDb = require('./models/categoriesQueries')
 
-let app = express();
-let router = express.Router();
+let app = express(),
+    router = express.Router();
 
 
 // Middleware

@@ -15,7 +15,9 @@
         "body-parser": "^1.18.2",
         "express": "^4.16.2",
         "nodemon": "^1.15.1",
-        "pg-promise": "^8.0.0"
+        "pg": "^7.4.1",
+        "pg-promise": "^8.0.0",
+        "redis": "^2.8.0"
     },
     "scripts": {
         "test": "echo \"Error : no test provided\" && exit 1",
